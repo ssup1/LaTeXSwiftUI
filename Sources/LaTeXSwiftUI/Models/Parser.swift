@@ -56,7 +56,13 @@ internal struct Parser {
     regex: #/\\\[\s*(.*?)\s*\\\]/#,
     terminatingRegex: #/\\\]/#,
     equation: .blockEquation)
-  
+
+    /// A block equation.
+    static let block2 = EquationComponent(
+        regex: #/\\\(\s*(.*?)\s*\\\)/#,
+        terminatingRegex: #/\\\)/#,
+        equation: .block2Equation)
+
   /// A named equation component.
   static let named = EquationComponent(
     regex: #/\\begin{equation}\s*(.*?)\s*\\end{equation}/#,
@@ -74,6 +80,7 @@ internal struct Parser {
     inline,
     tex,
     block,
+    block2,
     named,
     namedNoNumber
   ]

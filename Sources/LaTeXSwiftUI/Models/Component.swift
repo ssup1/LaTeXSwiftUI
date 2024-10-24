@@ -99,7 +99,8 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     ///
     /// - Example: `\[x^2\]`
     case blockEquation
-    
+    case block2Equation
+
     /// A named equation component.
     ///
     /// - Example: `\begin{equation}x^2\end{equation}`
@@ -122,6 +123,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\["
+      case .block2Equation: return "\\("
       case .namedEquation: return "\\begin{equation}"
       case .namedNoNumberEquation: return "\\begin{equation*}"
       }
@@ -134,6 +136,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\]"
+      case .block2Equation: return "\\)"
       case .namedEquation: return "\\end{equation}"
       case .namedNoNumberEquation: return "\\end{equation*}"
       }
