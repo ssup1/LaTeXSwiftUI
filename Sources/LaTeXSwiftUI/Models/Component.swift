@@ -84,7 +84,9 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     
     /// A text component.
     case text
-    
+
+      case boldText
+
     /// An inline equation component.
     ///
     /// - Example: `$x^2$`
@@ -120,6 +122,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     var leftTerminator: String {
       switch self {
       case .text: return ""
+      case .boldText: return "\\textbf{"
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\["
@@ -133,6 +136,7 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     var rightTerminator: String {
       switch self {
       case .text: return ""
+      case .boldText: return "}"
       case .inlineEquation: return "$"
       case .texEquation: return "$$"
       case .blockEquation: return "\\]"
@@ -145,14 +149,14 @@ internal struct Component: CustomStringConvertible, Equatable, Hashable {
     /// Whether or not this component is inline.
     var inline: Bool {
       switch self {
-      case .text, .inlineEquation: return true
+      case .text, .boldText, .inlineEquation: return true
       default: return false
       }
     }
     
     /// True iff the component is not `text`.
     var isEquation: Bool {
-      return self != .text
+        return self != .text
     }
   }
   

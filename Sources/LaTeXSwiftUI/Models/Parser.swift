@@ -50,14 +50,20 @@ internal struct Parser {
     regex: #/\$\$\s*(.*?)\s*\$\$/#,
     terminatingRegex: #/\$\$/#,
     equation: .texEquation)
-  
+
+    /// A bold text equation component.
+    static let boldText = EquationComponent(
+        regex: #/\\textbf{(.*)}/#,
+        terminatingRegex: #/\}/#,
+        equation: .boldText)
+
   /// A block equation.
   static let block = EquationComponent(
     regex: #/\\\[\s*(.*?)\s*\\\]/#,
     terminatingRegex: #/\\\]/#,
     equation: .blockEquation)
 
-    /// A block equation.
+    /// A block2 equation.
     static let block2 = EquationComponent(
         regex: #/\\\(\s*(.*?)\s*\\\)/#,
         terminatingRegex: #/\\\)/#,
@@ -79,6 +85,7 @@ internal struct Parser {
   static let allEquations: [EquationComponent] = [
     inline,
     tex,
+    boldText,
     block,
     block2,
     named,
